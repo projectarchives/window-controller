@@ -11,6 +11,8 @@ Works only on Windows
 | Description   | Window Controller Plugin
 | Version		| 1.0
 
+## Packets
+
 | Packet Name	| Header
 | ---           |:---
 | LIST			| -127
