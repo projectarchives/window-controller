@@ -23,10 +23,11 @@ public class ListPacketListener extends PacketListener {
 			int len = dis.readInt();
 			
 			for (int i = 0; i < len; i++) {
+				int handle = dis.readInt();
 				String title = client.readString();
 				boolean visible = dis.readBoolean();
 				
-				NativeWindow window = new NativeWindow(title, visible);
+				NativeWindow window = new NativeWindow(handle, title, visible);
 				
 				for (NewWindowListener l : LISTENERS) {
 					l.windowAdded(window);

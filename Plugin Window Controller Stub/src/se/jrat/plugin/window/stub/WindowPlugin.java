@@ -43,7 +43,9 @@ public class WindowPlugin extends StubPlugin {
 			for (int i = 0; i < windows.size(); i++) {
 				NativeWindow window = windows.get(i);
 				
+				dos.writeInt(window.getHwnd());
 				writeString(window.getTitle());
+				dos.writeBoolean(window.isVisible());
 			}
 		}
 	}

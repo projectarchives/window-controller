@@ -18,7 +18,10 @@ import jrat.api.ui.BaseControlPanel;
 public class WindowPanel extends BaseControlPanel implements NewWindowListener {
 	
 	public static final String COLUMN_WINDOW_TITLE = "Window Title";
-	
+	public static final String COLUMN_STATE = "State";
+	public static final String COLUMN_HANDLE = "Handle";
+	public static final String COLUMN_VISIBLE = "Visible";
+
 	private TableModel model;
 	private JTable table;
 	
@@ -76,6 +79,12 @@ public class WindowPanel extends BaseControlPanel implements NewWindowListener {
 					label.setIcon(IconUtils.getIcon("window-disabled", WindowPanel.class));
 				}
 				label.setText(window.getTitle());
+			} else if (colname == COLUMN_STATE) {
+				label.setText(null);
+			} else if (colname == COLUMN_HANDLE) {
+				label.setText(window.getHandle() + "");
+			} else if (colname == COLUMN_VISIBLE) {
+				label.setText(window.isVisible() + "");
 			}
 			
 			return label;
