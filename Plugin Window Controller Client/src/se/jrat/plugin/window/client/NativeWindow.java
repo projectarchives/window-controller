@@ -7,6 +7,7 @@ public class NativeWindow {
 	private boolean visible;
 
 	public NativeWindow(int handle, String title, boolean visible) {
+		this.handle = handle;
 		this.title = title;
 		this.visible = visible;
 	}
