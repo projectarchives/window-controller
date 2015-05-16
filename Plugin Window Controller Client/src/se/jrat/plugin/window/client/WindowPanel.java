@@ -26,7 +26,6 @@ import jrat.api.ui.BaseControlPanel;
 public class WindowPanel extends BaseControlPanel implements NewWindowListener {
 	
 	public static final String COLUMN_WINDOW_TITLE = "Window Title";
-	public static final String COLUMN_STATE = "State";
 	public static final String COLUMN_HANDLE = "Handle";
 	public static final String COLUMN_VISIBLE = "Visible";
 
@@ -79,7 +78,6 @@ public class WindowPanel extends BaseControlPanel implements NewWindowListener {
 		
 		public TableModel() {
 			addColumn(COLUMN_WINDOW_TITLE);
-			addColumn(COLUMN_STATE);
 			addColumn(COLUMN_HANDLE);
 			addColumn(COLUMN_VISIBLE);
 		}
@@ -115,8 +113,6 @@ public class WindowPanel extends BaseControlPanel implements NewWindowListener {
 				} else {
 					label.setText(window.getTitle());
 				}
-			} else if (colname == COLUMN_STATE) {
-				label.setText(null);
 			} else if (colname == COLUMN_HANDLE) {
 				label.setText(window.getHandle() + "");
 			} else if (colname == COLUMN_VISIBLE) {
