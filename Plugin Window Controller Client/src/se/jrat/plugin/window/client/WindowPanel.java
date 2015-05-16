@@ -128,7 +128,7 @@ public class WindowPanel extends BaseControlPanel implements NewWindowListener {
 
 	@Override
 	public void windowAdded(NativeWindow window) {
-		model.addRow(new Object[] { window });
+		model.insertRow(window.isVisible() ? 0 : model.getRowCount(), new Object[] { window });
 	}
 	
 	public static void addPopup(Component component, final JPopupMenu popup) {
