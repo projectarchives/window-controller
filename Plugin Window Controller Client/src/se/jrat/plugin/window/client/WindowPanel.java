@@ -53,6 +53,9 @@ public class WindowPanel extends BaseControlPanel implements NewWindowListener {
 		
 		public TableModel() {
 			addColumn(COLUMN_WINDOW_TITLE);
+			addColumn(COLUMN_STATE);
+			addColumn(COLUMN_HANDLE);
+			addColumn(COLUMN_VISIBLE);
 		}
 		
 		@Override
