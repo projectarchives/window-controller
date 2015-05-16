@@ -11,6 +11,10 @@ Works only on Windows
 | Description   | Window Controller Plugin
 | Version		| 1.0
 
+| Packet Name	| Header
+| ---           |:---
+| LIST			| -127
+
 ## Dependencies
 
 - Client
