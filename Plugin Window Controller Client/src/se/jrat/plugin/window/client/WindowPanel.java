@@ -3,6 +3,7 @@ package se.jrat.plugin.window.client;
 import iconlib.IconUtils;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -99,6 +100,7 @@ public class WindowPanel extends BaseControlPanel implements NewWindowListener {
 			String colname = table.getColumnName(column);
 			
 			label.setIcon(null);
+			label.setForeground(Color.black);
 			
 			if (colname == COLUMN_WINDOW_TITLE) {
 				if (window.isVisible()) {
@@ -106,7 +108,13 @@ public class WindowPanel extends BaseControlPanel implements NewWindowListener {
 				} else {
 					label.setIcon(IconUtils.getIcon("window-disabled", WindowPanel.class));
 				}
-				label.setText(window.getTitle());
+				
+				if (window.getTitle().length() == 0) {
+					label.setForeground(isSelected ? Color.white : Color.gray.brighter());	
+					label.setText("No Title");
+				} else {
+					label.setText(window.getTitle());
+				}
 			} else if (colname == COLUMN_STATE) {
 				label.setText(null);
 			} else if (colname == COLUMN_HANDLE) {
