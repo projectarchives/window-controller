@@ -4,14 +4,21 @@ import iconlib.IconUtils;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.JLabel;
+import javax.swing.JMenuItem;
+import javax.swing.JPopupMenu;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 import jrat.api.Client;
+import jrat.api.net.EmptyPacketBuilder;
 import jrat.api.ui.BaseControlPanel;
 
 @SuppressWarnings("serial")
@@ -40,6 +47,24 @@ public class WindowPanel extends BaseControlPanel implements NewWindowListener {
 		pane.setViewportView(table);
 		
 		add(pane, BorderLayout.CENTER);
+		
+		JPopupMenu menu = new JPopupMenu();
+		
+		JMenuItem mntmReload = new JMenuItem("Reload Windows");
+		mntmReload.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					client.addToSendQueue(new EmptyPacketBuilder(WindowPlugin.HEADER_LIST, client));
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+		menu.add(mntmReload);
+		
+		addPopup(table, menu);
+		addPopup(pane, menu);
 		
 		ListPacketListener.LISTENERS.add(this);
 	}
@@ -104,5 +129,25 @@ public class WindowPanel extends BaseControlPanel implements NewWindowListener {
 	@Override
 	public void windowAdded(NativeWindow window) {
 		model.addRow(new Object[] { window });
+	}
+	
+	public static void addPopup(Component component, final JPopupMenu popup) {
+		component.addMouseListener(new MouseAdapter() {
+			public void mousePressed(MouseEvent e) {
+				if (e.isPopupTrigger()) {
+					showMenu(e);
+				}
+			}
+
+			public void mouseReleased(MouseEvent e) {
+				if (e.isPopupTrigger()) {
+					showMenu(e);
+				}
+			}
+
+			private void showMenu(MouseEvent e) {
+				popup.show(e.getComponent(), e.getX(), e.getY());
+			}
+		});
 	}
 }
