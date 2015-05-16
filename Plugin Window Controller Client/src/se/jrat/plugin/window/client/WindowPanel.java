@@ -1,5 +1,7 @@
 package se.jrat.plugin.window.client;
 
+import iconlib.IconUtils;
+
 import java.awt.BorderLayout;
 import java.awt.Component;
 
@@ -61,7 +63,12 @@ public class WindowPanel extends BaseControlPanel {
 			label.setIcon(null);
 			
 			if (colname == COLUMN_WINDOW_TITLE) {
-				
+				if (window.isVisible()) {
+					label.setIcon(IconUtils.getIcon("window", WindowPanel.class));
+				} else {
+					label.setIcon(IconUtils.getIcon("window-disabled", WindowPanel.class));
+				}
+				label.setText(window.getTitle());
 			}
 			
 			return label;
