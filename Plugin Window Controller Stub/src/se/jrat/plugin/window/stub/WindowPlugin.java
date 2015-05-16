@@ -57,6 +57,11 @@ public class WindowPlugin extends StubPlugin {
 			}
 		}
 	}
+	
+	@Override
+	public String getName() {
+		return "Window Controller";
+	}
 
 	@Override
 	public void onEnable() throws Exception {
