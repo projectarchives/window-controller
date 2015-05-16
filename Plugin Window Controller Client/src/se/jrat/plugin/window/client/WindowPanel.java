@@ -101,7 +101,9 @@ public class WindowPanel extends BaseControlPanel implements NewWindowListener {
 			label.setForeground(Color.black);
 			
 			if (colname == COLUMN_WINDOW_TITLE) {
-				if (window.isVisible()) {
+				if (window.getIcon() != null) {
+					label.setIcon(window.getIcon());
+				} else if (window.isVisible()) {
 					label.setIcon(IconUtils.getIcon("window", WindowPanel.class));
 				} else {
 					label.setIcon(IconUtils.getIcon("window-disabled", WindowPanel.class));

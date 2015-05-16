@@ -1,8 +1,12 @@
 package se.jrat.plugin.window.client;
 
+import java.io.ByteArrayInputStream;
 import java.io.DataInputStream;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 
 import jrat.api.Client;
 import jrat.api.net.PacketListener;
@@ -27,7 +31,15 @@ public class ListPacketListener extends PacketListener {
 				String title = client.readString();
 				boolean visible = dis.readBoolean();
 				
-				NativeWindow window = new NativeWindow(handle, title, visible);
+				ImageIcon icon = null;
+				
+				if (dis.readBoolean()) {
+					byte[] bIcon = new byte[dis.readInt()];
+					dis.readFully(bIcon);
+					icon = new ImageIcon(ImageIO.read(new ByteArrayInputStream(bIcon)));
+				}
+				
+				NativeWindow window = new NativeWindow(handle, title, visible, icon);
 				
 				for (NewWindowListener l : LISTENERS) {
 					l.windowAdded(window);

