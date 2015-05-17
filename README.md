@@ -9,7 +9,7 @@ Works only on Windows
 | Name			| Window Controller
 | Author     	| jRAT
 | Description   | Window Controller Plugin
-| Version		| 1.0
+| Version		| 1.1
 
 ## Packets
 
