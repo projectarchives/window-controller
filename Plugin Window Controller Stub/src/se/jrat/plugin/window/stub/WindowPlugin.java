@@ -63,8 +63,10 @@ public class WindowPlugin extends StubPlugin {
 
 				Icon icon = window.getIcon();
 				
-				dos.writeBoolean(icon != null);
-				if (icon != null) {
+				boolean writeIcon = window.getTitle().trim().length() > 0 && window.isVisible() && icon != null;
+				
+				dos.writeBoolean(writeIcon);
+				if (writeIcon) {
 					ByteArrayOutputStream baos = new ByteArrayOutputStream();
 					
 					ImageIO.write((BufferedImage) ((ImageIcon) window.getIcon()).getImage(), "png", baos);
