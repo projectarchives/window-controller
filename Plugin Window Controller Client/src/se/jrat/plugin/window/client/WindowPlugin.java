@@ -7,7 +7,7 @@ import jrat.api.ui.RATControlMenuEntry;
 
 public class WindowPlugin extends Plugin {
 	
-	public static final byte HEADER_LIST = -127;
+	public static final short HEADER_LIST = -127;
 
 	public WindowPlugin() {
 		super("Window Controller", "1.1", "Window Controller Plugin", "jRAT", IconUtils.getIcon("windows", WindowPlugin.class));
