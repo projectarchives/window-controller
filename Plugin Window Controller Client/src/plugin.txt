@@ -1,1 +1,1 @@
-se.jrat.plugin.window.client.WindowPlugin
+jrat.plugin.window.client.WindowPlugin

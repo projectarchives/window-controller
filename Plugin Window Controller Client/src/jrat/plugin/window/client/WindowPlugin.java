@@ -1,4 +1,4 @@
-package se.jrat.plugin.window.client;
+package jrat.plugin.window.client;
 
 import iconlib.IconUtils;
 import jrat.api.Plugin;

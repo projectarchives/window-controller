@@ -1,1 +1,1 @@
-se.jrat.plugin.window.stub.WindowPlugin
+jrat.plugin.window.stub.WindowPlugin

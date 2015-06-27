@@ -1,4 +1,4 @@
-package se.jrat.plugin.window.stub;
+package jrat.plugin.window.stub;
 
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
