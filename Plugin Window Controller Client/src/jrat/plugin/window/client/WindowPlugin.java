@@ -10,7 +10,7 @@ public class WindowPlugin extends Plugin {
 	public static final short HEADER_LIST = -127;
 
 	public WindowPlugin() {
-		super("Window Controller", "1.0", "Window Controller Plugin", "jRAT", Icons.getIcon("Window Controller", "/icons/icon.png"));
+		super("Window Controller", "1.0", "Window Controller Plugin", "jRAT", Icons.getIcon("Window Controller", "/icons/windows.png"));
 		
 		RATControlMenuEntry entry = new RATControlMenuEntry("Windows", icon, WindowPanel.class);		
 		RATControlMenuEntry.addEntry(entry);
