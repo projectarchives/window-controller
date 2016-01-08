@@ -23,7 +23,7 @@ public class WindowPlugin extends StubPlugin {
 	private DataOutputStream dos;
 
 	@Override
-	public void onStart() throws Exception {
+	public void onEnable() throws Exception {
 		
 	}
 
@@ -82,11 +82,6 @@ public class WindowPlugin extends StubPlugin {
 	@Override
 	public String getName() {
 		return "Window Controller";
-	}
-
-	@Override
-	public void onEnable() throws Exception {
-		
 	}
 	
 	private void writeString(String s) throws Exception {
