@@ -14,7 +14,7 @@ public class WindowPlugin extends Plugin {
 		super("Window Controller", "1.0", "Window Controller Plugin", "jRAT");
 
 		try {
-			icon = new ImageIcon(getResource("/icons/windows.png"));
+			icon = new ImageIcon(getResource("icons/windows.png"));
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
