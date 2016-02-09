@@ -31,7 +31,7 @@ public class WindowPanel extends BaseControlPanel implements NewWindowListener {
 	private TableModel model;
 	private JTable table;
 	
-	public WindowPanel(Client client) {
+	public WindowPanel(final Client client) {
 		super(client);
 		
 		setLayout(new BorderLayout(0, 0));
